@@ -32,6 +32,6 @@ public class ConsultarUsuario implements Task {
         LASTUPDATE_CONSULTA.getVariableSesion(),
         Arrays.asList(SerenityRest.lastResponse().as(ResponseConsultaUsuario[].class))
             .get(0)
-            .lastUpdate);
+            .getLastUpdate());
   }
 }

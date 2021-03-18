@@ -15,15 +15,11 @@ public class Setup {
   EnvironmentVariables environmentVariable;
   String urlBase;
 
-  @Before(order = 0)
+  @Before
   public void configurarUrlBase() {
     final String RUTA_URL = "baseurl";
     environmentVariable = Injectors.getInjector().getInstance(EnvironmentVariables.class);
     urlBase = EnvironmentSpecificConfiguration.from(environmentVariable).getProperty(RUTA_URL);
-  }
-
-  @Before(order = 1)
-  public void configurarActor() {
     OnStage.setTheStage(new OnlineCast());
     theActorCalled("René").whoCan(CallAnApi.at(urlBase));
   }

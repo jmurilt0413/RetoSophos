@@ -12,6 +12,7 @@ import co.com.retosophos.certificacion.apps.exceptions.CodigoRespuestaServicioEr
 import co.com.retosophos.certificacion.apps.exceptions.LastupdateError;
 import co.com.retosophos.certificacion.apps.models.ResponseConsultaUsuario;
 import co.com.retosophos.certificacion.apps.questions.CodigoRespuestaServicio;
+import co.com.retosophos.certificacion.apps.questions.ValidacionLastUpDate;
 import co.com.retosophos.certificacion.apps.utils.Aleatorios;
 import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.Actor;
@@ -25,28 +26,14 @@ public class CrearUsuario implements Task {
 
   private final String usuario;
 
+  /**
+   * Este constructor genera un usuario con un sufijo aleatorio para propositos de repeticion de pruebas
+   * @param usuario
+   */
   public CrearUsuario(String usuario) {
     this.usuario = usuario + Aleatorios.generarAleatoriosNumeros(8);
-    ;
   }
 
-  /**
-   * Dado que la API no permite eliminar, este metodo debe ser usado con un nombre diferente cada
-   * vez desde el feature
-   *
-   * @param usuario
-   * @return usuario
-   */
-  public static CrearUsuario conNombre(String usuario) {
-    return Tasks.instrumented(CrearUsuario.class, usuario);
-  }
-
-  /**
-   * Este metodo genera un usuario con un sufijo aleatorio para propositos de repeticion de pruebas
-   *
-   * @param usuario
-   * @return usuario + numero aleatorio en formato String
-   */
   public static Performable conNombreAleatorio(String usuario) {
     return Tasks.instrumented(CrearUsuario.class, usuario);
   }
@@ -56,14 +43,18 @@ public class CrearUsuario implements Task {
     actor.attemptsTo(
         Post.to(String.format(CREACION_USUARIO.getRecurso(), usuario))
             .with(
-                requestSpecification -> requestSpecification.header("accept", "*/*").log().all()));
+                requestSpecification -> requestSpecification
+                    .header("accept", "*/*").log().all()));
     actor.remember(
         LASTUPDATE_CREACION.getVariableSesion(),
-        SerenityRest.lastResponse().as(ResponseConsultaUsuario.class).lastUpdate);
+        SerenityRest.lastResponse().as(ResponseConsultaUsuario.class).getLastUpdate());
     actor.remember(NOMBRE_USUARIO.getVariableSesion(), usuario);
     actor.should(
         seeThat(CodigoRespuestaServicio.obtenido(), equalTo(HttpStatus.SC_OK))
-            .orComplainWith(CodigoRespuestaServicioError.class, CODIGO_RESPUESTA_SERVICIO)
+            .orComplainWith(CodigoRespuestaServicioError.class, CODIGO_RESPUESTA_SERVICIO));
+    actor.should(
+        seeThat(ValidacionLastUpDate
+            .esVacio(SerenityRest.lastResponse().as(ResponseConsultaUsuario.class)), equalTo(true))
             .orComplainWith(LastupdateError.class, LASTUPDATE_INCORRECTO));
   }
 }

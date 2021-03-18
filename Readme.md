@@ -1,25 +1,32 @@
 ## Table of Contents
-1. [General Info](general-info)
-2. [Technologies](technologies)
-3. [Execution](installation)
+1. [Informacion general](general-info)
+2. [Tecnologias](technologies)
+3. [Ejecución](installation)
 ### General Info
 ***
-This project was designed for Sophos in order to evaluate technical concepts. A scenario will be automated by Front and Back
+Este proyecto fue creado con el fin de poner a prueba la habilidad para automatizar front
+y back.
+
 ## Technologies
 ***
-A list of technologies used within the project:
+Esta es la lista de tecnologias utilizadas:
 * [Junit](https://mvnrepository.com/artifact/junit/junit/4.12) 
 * [ChromeDriver 88.0.4324.96](https://chromedriver.chromium.org/) 
-* [Serenity-Cumcumber](https://mvnrepository.com/artifact/net.serenity-bdd/serenity-cucumber/1.9.51)
-* [Serenity-Rest](https://mvnrepository.com/artifact/net.serenity-bdd/serenity-cucumber/1.9.51)
-* [Serenity-WebDriver](https://mvnrepository.com/artifact/net.serenity-bdd/serenity-screenplay-webdriver/2.3.31)
-* [Serenity-Core](https://mvnrepository.com/artifact/net.serenity-bdd/serenity-core/2.3.31)
-* [Serenity-ScreenPlay](https://mvnrepository.com/artifact/net.serenity-bdd/serenity-screenplay/2.3.31)
+* [Serenity-Cumcumber](https://mvnrepository.com/artifact/net.serenity-bdd/serenity-cucumber/)
+* [Serenity-Rest](https://mvnrepository.com/artifact/net.serenity-bdd/serenity-cucumber/)
+* [Serenity-WebDriver](https://mvnrepository.com/artifact/net.serenity-bdd/serenity-screenplay-webdriver/)
+* [Serenity-Core](https://mvnrepository.com/artifact/net.serenity-bdd/serenity-core/)
+* [Serenity-ScreenPlay](https://mvnrepository.com/artifact/net.serenity-bdd/serenity-screenplay/)
 ## Execution
 ***
-Follow the next steps 
+Se debe seguir los siguientes pasos 
 ```
-* Check the Chrome version of the computer and if necessary copy the chromedriver corresponding 
-  to the chrome version in the path "src/test/resources/webdriver/windows/chromedriver.exe"
+* Validar la version del navegador chrome y agregar en la siguiente ruta 
+  la version de chrome driver correspondiente en caso que no corresponda
+   "src/test/resources/webdriver/windows/chromedriver.exe"
+
+* Se puede ejecutar todo el proyecto desde la terminal de gradle con el
+  comando $gradle clean test
+
 
 ```

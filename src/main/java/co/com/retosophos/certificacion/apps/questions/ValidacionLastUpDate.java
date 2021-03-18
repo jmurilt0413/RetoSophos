@@ -18,6 +18,6 @@ public class ValidacionLastUpDate implements Question<Boolean> {
 
   @Override
   public Boolean answeredBy(Actor actor) {
-    return (!responseConsultaUsuario.lastUpdate.toString().equals(""));
+    return (!responseConsultaUsuario.getLastUpdate().toString().equals(""));
   }
 }
