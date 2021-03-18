@@ -7,9 +7,7 @@ import static co.com.retosophos.certificacion.apps.utils.enums.EnumCredenciales.
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.Open;
@@ -17,7 +15,9 @@ import net.thucydides.core.util.EnvironmentVariables;
 
 
 public class IniciarSesion implements Task {
+
   EnvironmentVariables environmentVariable;
+
 
   public static IniciarSesion conUsuario(String usuario) {
     return instrumented(IniciarSesion.class, usuario);
@@ -31,6 +31,4 @@ public class IniciarSesion implements Task {
         Enter.theValue(CREDENCIALES_SAUCEDEMO.getClave()).into(TXT_CONTRASENHA),
         Click.on(BTN_LOGIN));
   }
-
-
 }

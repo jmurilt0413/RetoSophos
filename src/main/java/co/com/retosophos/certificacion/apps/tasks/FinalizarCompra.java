@@ -23,7 +23,7 @@ public class FinalizarCompra implements Task {
   }
 
   public static FinalizarCompra conLosDatos(String cliente) {
-    return instrumented(FinalizarCompra.class, cliente) ;
+    return instrumented(FinalizarCompra.class, cliente);
   }
 
   @Override

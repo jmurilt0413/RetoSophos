@@ -1,7 +1,7 @@
 # language: es
 
 Característica: Validar que la compra de un artículo sea exitosa.
-  Yo como cliente de saucedemo
+  Yo como cliente de Saucedemo
   deseo comprar un artículo
   para verificar que la compra sea exitosa.
 

@@ -1,7 +1,6 @@
 package co.com.retosophos.certificacion.apps.utils.enums;
 
 public enum EnumCredenciales {
-
   CREDENCIALES_SAUCEDEMO("standard_user", "secret_sauce");
 
   private final String usuario;

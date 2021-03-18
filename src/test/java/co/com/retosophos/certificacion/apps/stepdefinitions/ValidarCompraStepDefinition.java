@@ -18,25 +18,21 @@ public class ValidarCompraStepDefinition {
 
   @Dado("que René ingresa a la pagina Saucedemo con el usuario {word}")
   public void iniciarSesionSaucedemo(String usuario) {
-    theActorInTheSpotlight().attemptsTo(
-        IniciarSesion.conUsuario(usuario));
+    theActorInTheSpotlight().attemptsTo(IniciarSesion.conUsuario(usuario));
   }
 
   @Cuando("{word} compra el articulo {string}")
   public void agregarProductoCarro(String cliente, String producto) {
-    theActorInTheSpotlight().attemptsTo(
-        AgregarProductoCarroCompras.producto(producto),
-        FinalizarCompra.conLosDatos(cliente));
+    theActorInTheSpotlight()
+        .attemptsTo(
+            AgregarProductoCarroCompras.producto(producto), FinalizarCompra.conLosDatos(cliente));
   }
 
   @Entonces("debería visualizar el siguiente mensaje: {string}")
   public void validarMensajeCompra(String mensaje) {
     theActorInTheSpotlight()
         .should(
-            seeThat(
-                ValidarMensaje.deCompra(),
-                equalTo(
-                    mensaje))
+            seeThat(ValidarMensaje.deCompra(), equalTo(mensaje))
                 .orComplainWith(MensajeIncorrecto.class, MENSAJE_INCORRECTO_COMPRA));
   }
 }

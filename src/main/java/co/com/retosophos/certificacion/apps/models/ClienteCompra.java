@@ -6,10 +6,10 @@ public class ClienteCompra {
   private final String apellido;
   private final String codigoPostal;
 
-  public ClienteCompra(String nombre){
-    this.nombre =nombre;
-    this.apellido="Murillo";
-    this.codigoPostal="00500010";
+  public ClienteCompra(String nombre) {
+    this.nombre = nombre;
+    this.apellido = "Murillo";
+    this.codigoPostal = "00500010";
   }
 
   public String getNombre() {
@@ -23,5 +23,4 @@ public class ClienteCompra {
   public String getCodigoPostal() {
     return codigoPostal;
   }
-
 }

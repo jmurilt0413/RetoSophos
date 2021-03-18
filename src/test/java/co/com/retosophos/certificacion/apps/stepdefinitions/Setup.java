@@ -28,4 +28,13 @@ public class Setup {
     theActorCalled("René").whoCan(CallAnApi.at(urlBase));
   }
 
+  @Before("@InicializarActor")
+  public void configurarServicioActor() {
+    OnStage.setTheStage(new OnlineCast());
+    theActorCalled("René")
+        .whoCan(
+            CallAnApi.at(
+                String.valueOf(
+                    environmentVariable.getProperty("environments.advantage.endpoint"))));
+  }
 }
