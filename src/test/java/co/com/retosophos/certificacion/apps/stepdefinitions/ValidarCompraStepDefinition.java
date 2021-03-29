@@ -5,11 +5,6 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static org.hamcrest.Matchers.equalTo;
 
-import co.com.retosophos.certificacion.apps.exceptions.MensajeIncorrecto;
-import co.com.retosophos.certificacion.apps.questions.ValidarMensaje;
-import co.com.retosophos.certificacion.apps.tasks.AgregarProductoCarroCompras;
-import co.com.retosophos.certificacion.apps.tasks.FinalizarCompra;
-import co.com.retosophos.certificacion.apps.tasks.IniciarSesion;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
